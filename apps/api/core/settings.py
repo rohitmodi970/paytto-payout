@@ -136,7 +136,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-cors_allowed_origins = config("CORS_ALLOWED_ORIGINS", default="", cast=Csv())
+default_cors_origins = "https://paytto-payout-web.vercel.app"
+cors_allowed_origins = config("CORS_ALLOWED_ORIGINS", default=default_cors_origins, cast=Csv())
 CORS_ALLOWED_ORIGINS = [origin for origin in cors_allowed_origins if origin]
 CORS_ALLOW_ALL_ORIGINS = config("CORS_ALLOW_ALL_ORIGINS", default=False, cast=bool)
 
