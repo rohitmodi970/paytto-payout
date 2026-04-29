@@ -4,6 +4,7 @@ from urllib.parse import parse_qs, unquote, urlparse
 from pathlib import Path
 
 from decouple import Csv, config
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,6 +141,7 @@ default_cors_origins = "https://paytto-payout-web.vercel.app"
 cors_allowed_origins = config("CORS_ALLOWED_ORIGINS", default=default_cors_origins, cast=Csv())
 CORS_ALLOWED_ORIGINS = [origin for origin in cors_allowed_origins if origin]
 CORS_ALLOW_ALL_ORIGINS = config("CORS_ALLOW_ALL_ORIGINS", default=False, cast=bool)
+CORS_ALLOW_HEADERS = list(default_headers) + ["idempotency-key"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
