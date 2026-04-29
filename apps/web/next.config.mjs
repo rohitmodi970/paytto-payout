@@ -12,7 +12,7 @@ const nextConfig = {
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
       `connect-src 'self' https://paytto-payout-1.onrender.com${isDev ? " http://localhost:3000" : ""}`,
-      `script-src 'self'${isDev ? " 'unsafe-eval'" : ""}`,
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
     ].join("; ")
 
     return [
